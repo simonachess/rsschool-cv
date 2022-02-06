@@ -22,8 +22,69 @@ decision-making, attention to details, ability to work in a team. My goal is to 
 - MySQL
 
 ## Latest code example
+```JSX
+import React, {useState} from 'react'
+import data from '../data/data'
 
+export default function RenderTree() {
 
+	const [active, setActive] = useState([])
+	const [breadcrumbs, setBreadcrumbs] =useState([])
+	
+	const handleActiveNode = (node) =>{
+
+		if(!active.includes(node.id)){
+			if((node.id).length <= active.length){
+				const copyActive = active.slice(0,(node.id).length-1)
+				const copyBreadcrumb = breadcrumbs.slice(0,(node.id).length)
+				setActive([...copyActive, node.id])
+				setBreadcrumbs([...copyBreadcrumb, node.title])
+			}else{
+				setActive([...active, node.id])
+				setBreadcrumbs([...breadcrumbs, node.title])
+			}
+		}
+	}
+
+	const handleShowFolders = (title) =>{
+		if(!breadcrumbs.includes(title)){
+			setBreadcrumbs([...breadcrumbs, title])
+		}
+	}
+
+	const createMenu = (data) => {
+		return (
+			<ul>
+				{data?.map((node, i) => {
+					return (
+						<li key={i} className='node'>
+							<div onClick={()=>handleActiveNode(node)} >{node.title}</div>
+							{node.nodes?.length > 0 && 
+								<div className={`${active.includes(node.id) ? "" : "hidden-levels"}`}>{createMenu(node.nodes)}</div>}
+								
+						</li>
+					)})}
+			</ul>
+		)
+	}
+
+	const menu = createMenu(data.Documents)
+
+	return (
+		<div className='container'>
+			<ul className='breadcrumb-container'>
+				{breadcrumbs.length > 0 && breadcrumbs.map((breacrumb, i)=>{
+					return(
+						<li key={i} className='breadcrumb'>{breacrumb}/</li>
+					)
+				})}
+			</ul>
+			<p onClick={()=>{handleShowFolders(Object.keys(data)[0])}} className='title'>{Object.keys(data)[0]}</p>
+			 <div className={`${breadcrumbs.length > 0 ? "" : "hidden-breadcrumb"}`}>{menu}</div>
+		</div>
+	)
+}
+```
 ## Experience
 Here is some of my works what I have learned https://github.com/simonachess.
 I was doing internship in Corner Case Technology for 7 weeks.
