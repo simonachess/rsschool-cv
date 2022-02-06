@@ -2,8 +2,8 @@
 
 ## Personal details
 **Simona Limontaite**
-Tel.: +37063975725
-Email: simona.limonte@gmail.com
+- Tel.: +37063975725
+- Email: simona.limonte@gmail.com
 
 ## Summary
 I am interested in entry level or junior front-end developer position.
@@ -13,13 +13,13 @@ lot of fields. Analytical mindset and justification, visualization, concentratio
 decision-making, attention to details, ability to work in a team. My goal is to retrain myself to IT field.
 
 ## Skills
-[-] HTML, CSS
-[-] JavaScript
-[-] Bootstrap
-[-] Tailwind
-[-] GitHub
-[-] React
-[-] MySQL
+- HTML, CSS
+- JavaScript
+- Bootstrap
+- Tailwind
+- GitHub
+- React
+- MySQL
 
 ## Latest code example
 
